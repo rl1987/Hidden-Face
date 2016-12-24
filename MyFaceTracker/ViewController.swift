@@ -25,7 +25,7 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         faceTrackerViewController!.startTracking { () -> Void in
-            
+
         }
     }
     
@@ -41,6 +41,7 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
             self.overlayViews[feature]![index].frame = frame
             self.overlayViews[feature]![index].isHidden = false
             self.overlayViews[feature]![index].backgroundColor = bgColor
+            self.overlayViews[feature]![index].alpha = 0.5
         } else {
             let newView = UIView(frame: frame)
             newView.backgroundColor = bgColor
