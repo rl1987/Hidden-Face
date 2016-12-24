@@ -15,6 +15,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     
     var overlayViews = [String: [UIView]]()
     
+    var faceObscuringView : UIView?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "faceTrackerEmbed") {
             faceTrackerViewController = segue.destination as? FaceTrackerViewController
@@ -25,12 +27,48 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         faceTrackerViewController!.startTracking { () -> Void in
-
+            self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light)) //UIView.init()
+            
+            //self.faceObscuringView?.backgroundColor = UIColor.black
+            
+            self.view.addSubview(self.faceObscuringView!)
         }
     }
     
     @IBAction func otherCamButtonTapped(_ sender: Any) {
         faceTrackerViewController!.swapCamera()
+    }
+    
+    func updateFaceObscuringViewPosition(_ points: FacePoints?) {
+        if let points = points {
+            var minX : CGFloat = self.view.bounds.size.width
+            var maxX : CGFloat = 0.0
+            var minY : CGFloat = self.view.bounds.size.height
+            var maxY : CGFloat = 0.0
+            
+            points.enumeratePoints({ (point, index) in
+                if point.x < minX {
+                    minX = point.x
+                }
+                
+                if point.x > maxX {
+                    maxX = point.x
+                }
+                
+                if point.y < minY {
+                    minY = point.y
+                }
+                
+                if point.y > maxY {
+                    maxY = point.y
+                }
+            })
+            
+            self.faceObscuringView!.frame = CGRect.init(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
+            self.faceObscuringView!.isHidden = false
+        } else {
+            self.faceObscuringView!.isHidden = true
+        }
     }
     
     func updateViewForFeature(_ feature: String, index: Int, point: CGPoint, bgColor: UIColor) {
@@ -66,7 +104,6 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     func faceTrackerDidUpdate(_ points: FacePoints?) {
         if let points = points {
             
-            
             for (index, point) in points.leftEye.enumerated() {
                 self.updateViewForFeature("leftEye", index: index, point: point, bgColor: UIColor.blue)
             }
@@ -100,6 +137,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         else {
             self.hideAllOverlayViews()
         }
+        
+        self.updateFaceObscuringViewPosition(points)
     }
 
 }
