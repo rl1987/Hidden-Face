@@ -31,7 +31,11 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Other cam" style="plain" id="IiQ-Qs-qw6"/>
+                                    <barButtonItem title="Other cam" style="plain" id="IiQ-Qs-qw6">
+                                        <connections>
+                                            <action selector="otherCamButtonTapped:" destination="BYZ-38-t0r" id="yk0-QI-KqS"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WkT-uY-nRX"/>
                                     <barButtonItem title="Mode" id="MzG-7J-Uru"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CXB-3s-XPE"/>

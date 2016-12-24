@@ -29,6 +29,10 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         }
     }
     
+    @IBAction func otherCamButtonTapped(_ sender: Any) {
+        faceTrackerViewController!.swapCamera()
+    }
+    
     func updateViewForFeature(_ feature: String, index: Int, point: CGPoint, bgColor: UIColor) {
         
         let frame = CGRect(x: point.x-2, y: point.y-2, width: 4.0, height: 4.0)
