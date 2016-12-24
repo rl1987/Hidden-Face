@@ -39,7 +39,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WkT-uY-nRX"/>
                                     <barButtonItem title="Mode" id="MzG-7J-Uru"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CXB-3s-XPE"/>
-                                    <barButtonItem systemItem="camera" id="PCF-OF-3qd"/>
+                                    <barButtonItem systemItem="camera" id="PCF-OF-3qd">
+                                        <connections>
+                                            <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="mFL-8l-5Yg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

@@ -8,6 +8,7 @@
 
 import UIKit
 import FaceTracker
+import AudioToolbox
 
 class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
 
@@ -16,6 +17,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     var overlayViews = [String: [UIView]]()
     
     var faceObscuringView : UIView?
+    
+    let drawFacePoints : Bool = false
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "faceTrackerEmbed") {
@@ -35,8 +38,36 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         }
     }
     
+    func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            playCameraSound()
+        }
+    }
+    
+    func playCameraSound() {
+        AudioServicesPlaySystemSound(1108)
+    }
+    
     @IBAction func otherCamButtonTapped(_ sender: Any) {
         faceTrackerViewController!.swapCamera()
+    }
+    
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        UIGraphicsBeginImageContext(self.view.bounds.size)
+        
+        self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        
+        let photoImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(photoImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+
     }
     
     func updateFaceObscuringViewPosition(_ points: FacePoints?) {
@@ -72,6 +103,10 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     }
     
     func updateViewForFeature(_ feature: String, index: Int, point: CGPoint, bgColor: UIColor) {
+        
+        if self.drawFacePoints == false {
+            return
+        }
         
         let frame = CGRect(x: point.x-2, y: point.y-2, width: 4.0, height: 4.0)
         
