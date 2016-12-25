@@ -39,7 +39,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WkT-uY-nRX"/>
                                     <barButtonItem title="Mode" id="MzG-7J-Uru">
                                         <connections>
-                                            <segue destination="7T3-o5-PxC" kind="presentation" id="VbV-si-6EF"/>
+                                            <segue destination="7T3-o5-PxC" kind="presentation" identifier="chooseMode" id="VbV-si-6EF"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CXB-3s-XPE"/>
@@ -102,11 +102,11 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYP-XQ-fhh" id="3mT-EW-aMs">
-                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="935-JO-mao">
-                                                    <rect key="frame" x="15" y="0.0" width="266" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="266" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

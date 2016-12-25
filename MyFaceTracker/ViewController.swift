@@ -17,7 +17,7 @@ public enum FaceObscuringMode {
     case BlackRectangleEyesOnly
 };
 
-class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
+class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeSelectionViewControllerDelegate {
 
     weak var faceTrackerViewController: FaceTrackerViewController?
     
@@ -33,6 +33,12 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         if (segue.identifier == "faceTrackerEmbed") {
             faceTrackerViewController = segue.destination as? FaceTrackerViewController
             faceTrackerViewController!.delegate = self
+        } else if (segue.identifier == "chooseMode") {
+            let msvc = segue.destination as! ModeSelectionViewController
+            
+            msvc.faceObscuringMode = self.faceObscuringMode
+            
+            msvc.delegate = self
         }
     }
     
@@ -41,11 +47,11 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         faceTrackerViewController!.startTracking { () -> Void in
             print("Started tracking")
             
-            self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light)) //UIView.init()
-            
-            //self.faceObscuringView?.backgroundColor = UIColor.black
-            
-            self.view.addSubview(self.faceObscuringView!)
+            if self.faceObscuringView == nil {
+                self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light))
+                
+                self.view.addSubview(self.faceObscuringView!)
+            }
         }
     }
     
@@ -186,6 +192,15 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
         
         self.updateFaceObscuringViewPosition(points)
     }
-
+    
+    func modeSelectionVC(_ modeSelectionVC: ModeSelectionViewController, didChoose mode : FaceObscuringMode) {
+        if (self.faceObscuringMode == mode) {
+            return
+        }
+        
+        self.faceObscuringMode = mode
+        
+        
+    }
 }
 

@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ModeSelectionViewControllerDelegate : NSObjectProtocol {
+    func modeSelectionVC(_ modeSelectionVC: ModeSelectionViewController, didChoose mode : FaceObscuringMode)
+}
+
 class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView : UITableView?
     
     var faceObscuringMode : FaceObscuringMode = .WhiteBlur
+    
+    weak var delegate : ModeSelectionViewControllerDelegate?
     
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -20,6 +26,12 @@ class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func saveTapped(_ sender: Any) {
         print("Save tapped")
+        
+        if ((self.delegate) != nil) {
+            self.delegate?.modeSelectionVC(self, didChoose: self.faceObscuringMode)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
