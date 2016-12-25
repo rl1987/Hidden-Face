@@ -200,7 +200,18 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
         
         self.faceObscuringMode = mode
         
+        self.faceObscuringView?.removeFromSuperview()
+        self.faceObscuringView = nil
         
+        if (self.faceObscuringMode == .WhiteBlur || self.faceObscuringMode == .WhiteBlurEyesOnly) {
+            self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light))
+        } else if (self.faceObscuringMode == .BlackRectangle || self.faceObscuringMode == .BlackRectangleEyesOnly) {
+            self.faceObscuringView = UIView.init()
+            
+            self.faceObscuringView?.backgroundColor = UIColor.black
+        }
+        
+        self.view.addSubview(self.faceObscuringView!)
     }
 }
 
