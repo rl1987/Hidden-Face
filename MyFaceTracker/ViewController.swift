@@ -10,6 +10,13 @@ import UIKit
 import FaceTracker
 import AudioToolbox
 
+public enum FaceObscuringMode {
+    case WhiteBlur
+    case BlackRectangle
+    case WhiteBlurEyesOnly
+    case BlackRectangleEyesOnly
+};
+
 class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
 
     weak var faceTrackerViewController: FaceTrackerViewController?
@@ -17,6 +24,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     var overlayViews = [String: [UIView]]()
     
     var faceObscuringView : UIView?
+    
+    var faceObscuringMode : FaceObscuringMode = .WhiteBlur
     
     let drawFacePoints : Bool = false
     
@@ -30,6 +39,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         faceTrackerViewController!.startTracking { () -> Void in
+            print("Started tracking")
+            
             self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light)) //UIView.init()
             
             //self.faceObscuringView?.backgroundColor = UIColor.black

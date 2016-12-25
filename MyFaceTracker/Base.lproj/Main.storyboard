@@ -37,7 +37,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WkT-uY-nRX"/>
-                                    <barButtonItem title="Mode" id="MzG-7J-Uru"/>
+                                    <barButtonItem title="Mode" id="MzG-7J-Uru">
+                                        <connections>
+                                            <segue destination="7T3-o5-PxC" kind="presentation" id="VbV-si-6EF"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CXB-3s-XPE"/>
                                     <barButtonItem systemItem="camera" id="PCF-OF-3qd">
                                         <connections>
@@ -58,7 +62,75 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="258"/>
+            <point key="canvasLocation" x="-264" y="44"/>
+        </scene>
+        <!--Mode Selection View Controller-->
+        <scene sceneID="lJE-kx-jvo">
+            <objects>
+                <viewController id="7T3-o5-PxC" customClass="ModeSelectionViewController" customModule="MyFaceTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0jK-2d-hda"/>
+                        <viewControllerLayoutGuide type="bottom" id="CEb-nj-yPh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oae-Kc-yfB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rsa-iZ-Qj2">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="NPE-Aw-IPR">
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="7T3-o5-PxC" id="qlQ-No-8Yb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Tsb-fa-FDV"/>
+                                    <barButtonItem systemItem="save" id="Ogp-1i-Ero">
+                                        <connections>
+                                            <action selector="saveTapped:" destination="7T3-o5-PxC" id="dOY-IM-vqS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eJl-Rq-VZy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" textLabel="935-JO-mao" style="IBUITableViewCellStyleDefault" id="aYP-XQ-fhh">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYP-XQ-fhh" id="3mT-EW-aMs">
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="935-JO-mao">
+                                                    <rect key="frame" x="15" y="0.0" width="266" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7T3-o5-PxC" id="vvB-Oh-IqO"/>
+                                    <outlet property="delegate" destination="7T3-o5-PxC" id="2Pq-o5-CGO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="eJl-Rq-VZy" id="iBA-bb-MiZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZFK-SS-d2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="601.875" y="42.25352112676056"/>
         </scene>
         <!--Face Tracker View Controller-->
         <scene sceneID="2XY-ex-hPN">
@@ -76,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ba7-66-ntu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="1050"/>
+            <point key="canvasLocation" x="-264" y="862"/>
         </scene>
     </scenes>
 </document>
