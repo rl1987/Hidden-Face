@@ -59,6 +59,9 @@
                             <constraint firstAttribute="trailing" secondItem="kNF-FX-par" secondAttribute="trailing" id="g8x-zx-nPI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomToolbar" destination="ajr-Y2-bOd" id="3D7-xE-tTq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

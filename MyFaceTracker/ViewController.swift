@@ -18,7 +18,8 @@ public enum FaceObscuringMode {
 };
 
 class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeSelectionViewControllerDelegate {
-
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    
     weak var faceTrackerViewController: FaceTrackerViewController?
     
     var overlayViews = [String: [UIView]]()
@@ -75,6 +76,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     }
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
+        self.bottomToolbar.isHidden = true
+        
         UIGraphicsBeginImageContext(self.view.bounds.size)
         
         self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
@@ -84,7 +87,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
         UIGraphicsEndImageContext()
         
         UIImageWriteToSavedPhotosAlbum(photoImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-
+        
+        self.bottomToolbar.isHidden = false
     }
     
     func updateFaceObscuringViewPosition(_ points: FacePoints?) {
@@ -94,7 +98,15 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
             var minY : CGFloat = self.view.bounds.size.height
             var maxY : CGFloat = 0.0
             
-            points.enumeratePoints({ (point, index) in
+            var cgPoints = points.leftEye + points.rightEye
+            
+            if (self.faceObscuringMode == .BlackRectangle || self.faceObscuringMode == .WhiteBlur) {
+                cgPoints += points.leftBrow
+                cgPoints += points.rightBrow
+                cgPoints += points.outerMouth
+            }
+            
+            for point in cgPoints {
                 if point.x < minX {
                     minX = point.x
                 }
@@ -110,9 +122,10 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
                 if point.y > maxY {
                     maxY = point.y
                 }
-            })
+            }
             
             self.faceObscuringView!.frame = CGRect.init(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
+            
             self.faceObscuringView!.isHidden = false
         } else {
             self.faceObscuringView!.isHidden = true
