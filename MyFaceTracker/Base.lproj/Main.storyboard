@@ -79,9 +79,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rsa-iZ-Qj2">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rsa-iZ-Qj2">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem systemItem="cancel" id="NPE-Aw-IPR">
                                         <connections>
@@ -96,16 +95,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eJl-Rq-VZy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eJl-Rq-VZy">
+                                <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" textLabel="935-JO-mao" style="IBUITableViewCellStyleDefault" id="aYP-XQ-fhh">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYP-XQ-fhh" id="3mT-EW-aMs">
-                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="935-JO-mao">
@@ -126,6 +124,15 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eJl-Rq-VZy" firstAttribute="top" secondItem="0jK-2d-hda" secondAttribute="bottom" id="3HM-ee-zhK"/>
+                            <constraint firstItem="Rsa-iZ-Qj2" firstAttribute="top" secondItem="eJl-Rq-VZy" secondAttribute="bottom" id="Dtm-2G-wqd"/>
+                            <constraint firstAttribute="trailing" secondItem="eJl-Rq-VZy" secondAttribute="trailing" id="MRa-l8-Vei"/>
+                            <constraint firstItem="Rsa-iZ-Qj2" firstAttribute="leading" secondItem="Oae-Kc-yfB" secondAttribute="leading" id="Zvs-CX-tAH"/>
+                            <constraint firstAttribute="trailing" secondItem="Rsa-iZ-Qj2" secondAttribute="trailing" id="cMU-Ic-U2N"/>
+                            <constraint firstItem="eJl-Rq-VZy" firstAttribute="leading" secondItem="Oae-Kc-yfB" secondAttribute="leading" id="jan-7X-4Ad"/>
+                            <constraint firstItem="CEb-nj-yPh" firstAttribute="top" secondItem="Rsa-iZ-Qj2" secondAttribute="bottom" id="uTu-Nv-7dK"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="eJl-Rq-VZy" id="iBA-bb-MiZ"/>
