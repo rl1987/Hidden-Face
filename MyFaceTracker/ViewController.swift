@@ -45,6 +45,11 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        if (self.faceObscuringView != nil) {
+            return // Bail out if already started tracking and have .faceObscuringView
+        }
+        
         faceTrackerViewController!.startTracking { () -> Void in
             print("Started tracking")
             
