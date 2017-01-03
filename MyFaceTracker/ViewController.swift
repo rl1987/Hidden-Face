@@ -29,7 +29,7 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     
     var faceObscuringMode : FaceObscuringMode = .WhiteBlur
     
-    let drawFacePoints : Bool = false
+    let drawFacePoints : Bool = true
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "faceTrackerEmbed") {
@@ -99,38 +99,34 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     
     func updateFaceObscuringViewPosition(_ points: FacePoints?) {
         if let points = points {
-            var minX : CGFloat = self.view.bounds.size.width
-            var maxX : CGFloat = 0.0
-            var minY : CGFloat = self.view.bounds.size.height
-            var maxY : CGFloat = 0.0
-            
-            var cgPoints = points.leftEye + points.rightEye
-            
-            if (self.faceObscuringMode == .BlackRectangle || self.faceObscuringMode == .WhiteBlur) {
-                cgPoints += points.leftBrow
-                cgPoints += points.rightBrow
-                cgPoints += points.outerMouth
+            if self.faceObscuringMode == .MaskGuyFawkes {
+                self.faceObscuringView!.frame = CGRect.init(x: 0.0, y: 0.0, width: 375.0, height: 530.0)
+                
+                let maskLeftEye = CGPoint.init(x: 93.0, y: 204.0)
+                let maskRightEye = CGPoint.init(x: 285.0, y: 204.0)
+                
+                let maskIPD : CGFloat = 192.0
+                
+                let leftEyeCenter = points.leftEyeCenter()
+                
+                let displacement = CGVector.init(dx: leftEyeCenter.x - maskLeftEye.x, dy: leftEyeCenter.y - maskLeftEye.y)
+                
+                let scaleFactor = points.interPupillaryDistance() / maskIPD
+                
+                self.faceObscuringView!.frame =
+                    self.faceObscuringView!.frame.offsetBy(dx: 2 * displacement.dx, dy: 2 * displacement.dy)
+                
+                self.faceObscuringView!.frame =
+                    CGRect.init(x: self.faceObscuringView!.frame.origin.x,
+                                y: self.faceObscuringView!.frame.origin.y,
+                                width: self.faceObscuringView!.frame.size.width * scaleFactor,
+                                height: self.faceObscuringView!.frame.size.height * scaleFactor)
+            } else {
+                let eyesOnly = (self.faceObscuringMode == .BlackRectangleEyesOnly ||
+                    self.faceObscuringMode == .WhiteBlurEyesOnly)
+                
+                self.faceObscuringView!.frame = points.enclosingRect(eyesOnly)
             }
-            
-            for point in cgPoints {
-                if point.x < minX {
-                    minX = point.x
-                }
-                
-                if point.x > maxX {
-                    maxX = point.x
-                }
-                
-                if point.y < minY {
-                    minY = point.y
-                }
-                
-                if point.y > maxY {
-                    maxY = point.y
-                }
-            }
-            
-            self.faceObscuringView!.frame = CGRect.init(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
             
             self.faceObscuringView!.isHidden = false
         } else {
@@ -173,6 +169,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     }
     
     func faceTrackerDidUpdate(_ points: FacePoints?) {
+        self.updateFaceObscuringViewPosition(points)
+        
         if let points = points {
             
             for (index, point) in points.leftEye.enumerated() {
@@ -208,8 +206,6 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
         else {
             self.hideAllOverlayViews()
         }
-        
-        self.updateFaceObscuringViewPosition(points)
     }
     
     func modeSelectionVC(_ modeSelectionVC: ModeSelectionViewController, didChoose mode : FaceObscuringMode) {

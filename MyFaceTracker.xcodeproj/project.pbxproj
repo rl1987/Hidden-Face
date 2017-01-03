@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A8FD2711CC00E0100ED2DAE /* FaceTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */; };
 		4A8FD2721CC00E0100ED2DAE /* FaceTracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4DB1E52A1E1AECCC008715E8 /* FacePointsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1E5291E1AECCC008715E8 /* FacePointsExtension.swift */; };
 		4DE841231E0FE8C400C90B2B /* ModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE841221E0FE8C300C90B2B /* ModeSelectionViewController.swift */; };
 		9DFD548D1C9382D90082E103 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD548C1C9382D90082E103 /* AppDelegate.swift */; };
 		9DFD548F1C9382D90082E103 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD548E1C9382D90082E103 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FaceTracker.framework; sourceTree = "<group>"; };
+		4DB1E5291E1AECCC008715E8 /* FacePointsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacePointsExtension.swift; sourceTree = "<group>"; };
 		4DE841221E0FE8C300C90B2B /* ModeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionViewController.swift; sourceTree = "<group>"; };
 		9DFD54891C9382D90082E103 /* MyFaceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFaceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFD548C1C9382D90082E103 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				9DFD54951C9382D90082E103 /* LaunchScreen.storyboard */,
 				9DFD54981C9382D90082E103 /* Info.plist */,
 				4DE841221E0FE8C300C90B2B /* ModeSelectionViewController.swift */,
+				4DB1E5291E1AECCC008715E8 /* FacePointsExtension.swift */,
 			);
 			path = MyFaceTracker;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFD548F1C9382D90082E103 /* ViewController.swift in Sources */,
+				4DB1E52A1E1AECCC008715E8 /* FacePointsExtension.swift in Sources */,
 				4DE841231E0FE8C400C90B2B /* ModeSelectionViewController.swift in Sources */,
 				9DFD548D1C9382D90082E103 /* AppDelegate.swift in Sources */,
 			);
@@ -286,7 +290,7 @@
 				INFOPLIST_FILE = MyFaceTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lt.keyspace;
+				PRODUCT_BUNDLE_IDENTIFIER = lt.keyspace.dev.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -308,7 +312,7 @@
 				INFOPLIST_FILE = MyFaceTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lt.keyspace;
+				PRODUCT_BUNDLE_IDENTIFIER = lt.keyspace.dev.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
