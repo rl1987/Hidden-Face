@@ -10,12 +10,14 @@
 		4A8FD2711CC00E0100ED2DAE /* FaceTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */; };
 		4A8FD2721CC00E0100ED2DAE /* FaceTracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DB1E52A1E1AECCC008715E8 /* FacePointsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1E5291E1AECCC008715E8 /* FacePointsExtension.swift */; };
+		4DB1E6751E1FCBC9008715E8 /* lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1E6741E1FCBC9008715E8 /* lm.gif */; };
 		4DE841231E0FE8C400C90B2B /* ModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE841221E0FE8C300C90B2B /* ModeSelectionViewController.swift */; };
 		9DFD548D1C9382D90082E103 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD548C1C9382D90082E103 /* AppDelegate.swift */; };
 		9DFD548F1C9382D90082E103 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD548E1C9382D90082E103 /* ViewController.swift */; };
 		9DFD54921C9382D90082E103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD54901C9382D90082E103 /* Main.storyboard */; };
 		9DFD54941C9382D90082E103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD54931C9382D90082E103 /* Assets.xcassets */; };
 		9DFD54971C9382D90082E103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD54951C9382D90082E103 /* LaunchScreen.storyboard */; };
+		D65BA4CEF1788B9ADFEBAF07 /* Pods_MyFaceTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3E5340B912FAAAF7F61B8F /* Pods_MyFaceTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,8 +35,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A11CC123ABFFDDF44FEA9E3 /* Pods-MyFaceTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFaceTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFaceTracker/Pods-MyFaceTracker.release.xcconfig"; sourceTree = "<group>"; };
 		4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FaceTracker.framework; sourceTree = "<group>"; };
 		4DB1E5291E1AECCC008715E8 /* FacePointsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacePointsExtension.swift; sourceTree = "<group>"; };
+		4DB1E6741E1FCBC9008715E8 /* lm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lm.gif; sourceTree = "<group>"; };
 		4DE841221E0FE8C300C90B2B /* ModeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionViewController.swift; sourceTree = "<group>"; };
 		9DFD54891C9382D90082E103 /* MyFaceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFaceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFD548C1C9382D90082E103 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 		9DFD54931C9382D90082E103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DFD54961C9382D90082E103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DFD54981C9382D90082E103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E3E5340B912FAAAF7F61B8F /* Pods_MyFaceTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFaceTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9190254ADDFC74D291F486 /* Pods-MyFaceTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFaceTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFaceTracker/Pods-MyFaceTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,18 +57,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8FD2711CC00E0100ED2DAE /* FaceTracker.framework in Frameworks */,
+				D65BA4CEF1788B9ADFEBAF07 /* Pods_MyFaceTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A73E826012DE45070231991 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E3E5340B912FAAAF7F61B8F /* Pods_MyFaceTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		383BD235870E7C0F93E51A97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA9190254ADDFC74D291F486 /* Pods-MyFaceTracker.debug.xcconfig */,
+				0A11CC123ABFFDDF44FEA9E3 /* Pods-MyFaceTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9DFD54801C9382D90082E103 = {
 			isa = PBXGroup;
 			children = (
+				4DB1E6741E1FCBC9008715E8 /* lm.gif */,
 				4A8FD2701CC00E0100ED2DAE /* FaceTracker.framework */,
 				9DFD548B1C9382D90082E103 /* MyFaceTracker */,
 				9DFD548A1C9382D90082E103 /* Products */,
+				383BD235870E7C0F93E51A97 /* Pods */,
+				0A73E826012DE45070231991 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,10 +123,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DFD549B1C9382DA0082E103 /* Build configuration list for PBXNativeTarget "MyFaceTracker" */;
 			buildPhases = (
+				FEC50AAE7151F2753A9E98F8 /* [CP] Check Pods Manifest.lock */,
 				9DFD54851C9382D90082E103 /* Sources */,
 				9DFD54861C9382D90082E103 /* Frameworks */,
 				9DFD54871C9382D90082E103 /* Resources */,
 				4A8FD26F1CC00BB600ED2DAE /* Embed Frameworks */,
+				4F4A603CF35E929335347F76 /* [CP] Embed Pods Frameworks */,
+				32CC2008065534847C489E8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -153,10 +183,59 @@
 				9DFD54971C9382D90082E103 /* LaunchScreen.storyboard in Resources */,
 				9DFD54941C9382D90082E103 /* Assets.xcassets in Resources */,
 				9DFD54921C9382D90082E103 /* Main.storyboard in Resources */,
+				4DB1E6751E1FCBC9008715E8 /* lm.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32CC2008065534847C489E8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyFaceTracker/Pods-MyFaceTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F4A603CF35E929335347F76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyFaceTracker/Pods-MyFaceTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC50AAE7151F2753A9E98F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9DFD54851C9382D90082E103 /* Sources */ = {
@@ -277,6 +356,7 @@
 		};
 		9DFD549C1C9382DA0082E103 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA9190254ADDFC74D291F486 /* Pods-MyFaceTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -299,6 +379,7 @@
 		};
 		9DFD549D1C9382DA0082E103 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A11CC123ABFFDDF44FEA9E3 /* Pods-MyFaceTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

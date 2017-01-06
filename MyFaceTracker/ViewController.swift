@@ -9,6 +9,7 @@
 import UIKit
 import FaceTracker
 import AudioToolbox
+import Gifu
 
 public enum FaceObscuringMode {
     case WhiteBlur
@@ -240,7 +241,11 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
             
             self.faceObscuringView = UIImageView.init(image: guyFawkesMaskImage)
         } else if (self.faceObscuringMode == .LaughingMan) {
-            // TODO
+            let animationView = GIFImageView.init()
+            
+            animationView.animate(withGIFNamed: "lm")
+            
+            self.faceObscuringView = animationView
         }
         
         self.view.addSubview(self.faceObscuringView!)
