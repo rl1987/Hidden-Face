@@ -16,6 +16,7 @@ public enum FaceObscuringMode {
     case WhiteBlurEyesOnly
     case BlackRectangleEyesOnly
     case MaskGuyFawkes
+    case LaughingMan
 };
 
 class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeSelectionViewControllerDelegate {
@@ -238,8 +239,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
             let guyFawkesMaskImage = UIImage.init(named: "mask1.png", in: Bundle.main, compatibleWith: nil)
             
             self.faceObscuringView = UIImageView.init(image: guyFawkesMaskImage)
-            
-            
+        } else if (self.faceObscuringMode == .LaughingMan) {
+            // TODO
         }
         
         self.view.addSubview(self.faceObscuringView!)

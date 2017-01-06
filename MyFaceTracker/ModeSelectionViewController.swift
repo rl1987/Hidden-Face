@@ -35,7 +35,7 @@ class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,6 +62,10 @@ class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITabl
             cell?.textLabel!.text = "Guy Fawkes mask"
             cell?.accessoryType =
                 (self.faceObscuringMode == .MaskGuyFawkes) ? .checkmark : .none;
+        case 5:
+            cell?.textLabel!.text = "Laughing Man logo"
+            cell?.accessoryType =
+                (self.faceObscuringMode == .LaughingMan) ? .checkmark : .none;
         default:
             break
         }
@@ -81,6 +85,8 @@ class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITabl
             self.faceObscuringMode = .BlackRectangleEyesOnly
         case 4:
             self.faceObscuringMode = .MaskGuyFawkes
+        case 5:
+            self.faceObscuringMode = .LaughingMan
         default:
             break
         }
