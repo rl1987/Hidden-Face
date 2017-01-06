@@ -100,10 +100,11 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     func updateFaceObscuringViewPosition(_ points: FacePoints?) {
         if let points = points {
             if self.faceObscuringMode == .MaskGuyFawkes {
+                self.faceObscuringView!.transform = .identity
+                
                 self.faceObscuringView!.frame = CGRect.init(x: 0.0, y: 0.0, width: 375.0, height: 530.0)
                 
                 let maskLeftEye = CGPoint.init(x: 93.0, y: 204.0)
-                let maskRightEye = CGPoint.init(x: 285.0, y: 204.0)
                 
                 let maskIPD : CGFloat = 192.0
                 
@@ -121,6 +122,15 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
                                 y: self.faceObscuringView!.frame.origin.y,
                                 width: self.faceObscuringView!.frame.size.width * scaleFactor,
                                 height: self.faceObscuringView!.frame.size.height * scaleFactor)
+                
+                self.faceObscuringView!.layer.anchorPoint = CGPoint.init(x: 0.504, y: 0.384905660377358)
+                
+                let angle = atan2(points.rightEyeCenter().y - points.leftEyeCenter().y,
+                                  points.rightEyeCenter().x - points.leftEyeCenter().x)
+                
+                print("angle = ",angle)
+                
+                self.faceObscuringView!.transform = CGAffineTransform.identity.rotated(by: angle);
             } else {
                 let eyesOnly = (self.faceObscuringMode == .BlackRectangleEyesOnly ||
                     self.faceObscuringMode == .WhiteBlurEyesOnly)
@@ -228,6 +238,8 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
             let guyFawkesMaskImage = UIImage.init(named: "mask1.png", in: Bundle.main, compatibleWith: nil)
             
             self.faceObscuringView = UIImageView.init(image: guyFawkesMaskImage)
+            
+            
         }
         
         self.view.addSubview(self.faceObscuringView!)
