@@ -31,7 +31,7 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
     
     var faceObscuringMode : FaceObscuringMode = .WhiteBlur
     
-    let drawFacePoints : Bool = true
+    let drawFacePoints : Bool = false
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "faceTrackerEmbed") {
@@ -133,6 +133,17 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
                 print("angle = ",angle)
                 
                 self.faceObscuringView!.transform = CGAffineTransform.identity.rotated(by: angle);
+            } else if self.faceObscuringMode == .LaughingMan {
+                let enclosingRect = points.enclosingRect(false)
+                
+                let scale : CGFloat = 1.5
+                
+                let side = max(enclosingRect.size.width, enclosingRect.size.height) * scale
+                
+                self.faceObscuringView!.frame =
+                    CGRect.init(x: enclosingRect.origin.x, y: enclosingRect.origin.y, width: side, height: side)
+                
+                self.faceObscuringView!.center = CGPoint.init(x: enclosingRect.midX, y: enclosingRect.midY)
             } else {
                 let eyesOnly = (self.faceObscuringMode == .BlackRectangleEyesOnly ||
                     self.faceObscuringMode == .WhiteBlurEyesOnly)
