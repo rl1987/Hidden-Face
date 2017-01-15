@@ -57,7 +57,7 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
             print("Started tracking")
             
             if self.faceObscuringView == nil {
-                self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light))
+                self.faceObscuringView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
                 
                 self.view.addSubview(self.faceObscuringView!)
             }
@@ -242,17 +242,17 @@ class ViewController: UIViewController, FaceTrackerViewControllerDelegate, ModeS
         self.faceObscuringView = nil
         
         if (self.faceObscuringMode == .WhiteBlur || self.faceObscuringMode == .WhiteBlurEyesOnly) {
-            self.faceObscuringView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: UIBlurEffectStyle.light))
+            self.faceObscuringView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
         } else if (self.faceObscuringMode == .BlackRectangle || self.faceObscuringMode == .BlackRectangleEyesOnly) {
             self.faceObscuringView = UIView.init()
             
             self.faceObscuringView?.backgroundColor = UIColor.black
         } else if (self.faceObscuringMode == .MaskGuyFawkes) {
-            let guyFawkesMaskImage = UIImage.init(named: "mask1.png", in: Bundle.main, compatibleWith: nil)
+            let guyFawkesMaskImage = UIImage(named: "mask1.png", in: Bundle.main, compatibleWith: nil)
             
-            self.faceObscuringView = UIImageView.init(image: guyFawkesMaskImage)
+            self.faceObscuringView = UIImageView(image: guyFawkesMaskImage)
         } else if (self.faceObscuringMode == .LaughingMan) {
-            let animationView = GIFImageView.init()
+            let animationView = GIFImageView()
             
             animationView.animate(withGIFNamed: "lm")
             

@@ -27,9 +27,7 @@ class ModeSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func saveTapped(_ sender: Any) {
         print("Save tapped")
         
-        if ((self.delegate) != nil) {
-            self.delegate?.modeSelectionVC(self, didChoose: self.faceObscuringMode)
-        }
+        self.delegate?.modeSelectionVC(self, didChoose: self.faceObscuringMode)
         
         self.dismiss(animated: true, completion: nil)
     }
